@@ -1,0 +1,29 @@
+version: "3.7"
+services:
+  api:
+    build: ./api
+    env_file:
+      - ./api/.env.docker
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./api:/app:delegated
+  api-dev:
+    build:
+      context: ./api
+      dockerfile: dev.Dockerfile
+    env_file:
+      - ./api/.env.docker
+    volumes:
+      - ./api:/app:delegated
+  db:
+    # https://hub.docker.com/_/postgres
+    image: postgres
+    hostname: db
+    restart: always
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: epr
+      POSTGRES_PASSWORD: epr
+      POSTGRES_DATABASE: epr
