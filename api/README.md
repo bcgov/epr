@@ -95,3 +95,9 @@ make run
 #### [Makefile](Makefile)
 
 Refer to the [Makefile](Makefile) for various other useful commands for running tests, linting etc.
+
+## Architecture
+
+### Component Diagram
+
+![EPR API component diagram](../architecture/epr_api_component_diagram.jpg)

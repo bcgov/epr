@@ -30,3 +30,17 @@ OR
 docker-compose --build
 docker-compose up
 ```
+
+## Architecture
+
+### System Context Diagram
+
+![EPR system context diagram](architecture/epr_system_context_diagram.jpg)
+
+### Container Diagram
+
+![EPR container diagram](architecture/epr_container_diagram.jpg)
+
+### Component Diagram
+
+See [EPR API component diagram](api/README.md#component-diagram)
