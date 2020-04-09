@@ -13,4 +13,4 @@ set -euo pipefail
 #       2. By specifying our rcfile, we can configure exactly how we lint.
 #           - we're overriding the default pep8 max line length and allowing 110 lines.
 #           - we're whitelisting pydantic to allow for analyzing C extensions on it.
-python -m pylint --rcfile=.pylintrc *.py **/*.py
+pipenv run python -m pylint --rcfile=.pylintrc *.py **/*.py

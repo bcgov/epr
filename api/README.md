@@ -43,23 +43,6 @@ python3 -m pipenv install --dev
 
 ### Installing API
 
-#### Local machine, in docker
-
-```
-make docker-build
-```
-
-See [Makefile](Makefile) for details, the command above will effectively execute:
-
-```
-pipenv run python -m unittest
-pipenv run pylint --rcfile=.pylintrc *.py **/*.py
-cd ..
-docker-compose build
-```
-
-_note: `make docker-build` assumes you have already run `pipenv install --dev`, if this is not the case, you may call `docker-compose build` directly from the root directory._
-
 #### Local machine, on Mac / Ubuntu
 
 ```
@@ -79,12 +62,6 @@ make PIPENV='python3 -m pipenv' init
 ```
 
 ### Running API
-
-#### Local machine, in docker
-
-```
-make docker-run
-```
 
 #### Local machine, on Mac / Ubuntu
 

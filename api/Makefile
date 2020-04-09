@@ -30,26 +30,10 @@ shell:
 	# Run shell in virtual environment shell.
 	$(PIPENV) shell
 
-docker-build:
-	# Build docker images.
-	cd .. && make $(PIPENV) docker-build
-
-docker-test:
+docker-dev-test:
 	# Run tests in docker.
-	docker-compose -f ../docker-compose.yml run api scripts/test.sh
+	docker-compose -f ../docker-compose.dev.yml run api-dev scripts/test.sh
 
-docker-lint:
+docker-dev-lint:
 	# Run lint in docker.
-	docker-compose -f ../docker-compose.yml run api-dev scripts/lint.sh
-
-docker-run-dev:
-	# Run docker in dev mode.
-	# 1. run test and lint.
-	docker-compose -f ../docker-compose.yml run api-dev scripts/test.sh
-	docker-compose -f ../docker-compose.yml run api-dev scripts/lint.sh
-	# 2. start api
-	docker-compose -f ../docker-compose.yml run --service-ports api uvicorn main:APP --reload --host 0.0.0.0 --port 8080
-
-docker-run:
-	# Run api in production mode, in docker.
-	cd .. && make $(PIPENV) docker-run
+	docker-compose -f ../docker-compose.dev.yml run api-dev scripts/lint.sh

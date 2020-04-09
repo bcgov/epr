@@ -9,4 +9,4 @@ set -euo pipefail
 # - unittest : the module we use to run unit tests.
 
 # NOTE: the unittest require the ORIGINS environment variable to be set!
-python -m unittest
+pipenv run python -m unittest

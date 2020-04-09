@@ -1,17 +1,26 @@
-FROM node:10
+# Reference
+# https://automationrhapsody.com/dockerize-react-application-with-a-docker-multi-staged-build/
 
-# Set working directory
+# ========= BUILD =========
+FROM node:10 as builder
+
 WORKDIR /app
 
-# A wildcard is used to ensure both package.json AND package-lock.json are copied
 COPY package*.json ./
 
-## Install only the non-dev packages defined in the package-lock.json (faster than the normal npm install)
+## Install non-dev packages only defined in the package-lock.json
 RUN npm set progress=false && npm ci --production
 
 # Copy the contents of the project to the image
 COPY . .
 
-EXPOSE 3000
+# Build the application
+RUN npm run build
 
-CMD ["npm", "start"]
+# ========= RUN ==========
+FROM abiosoft/caddy:1.0.3
+
+COPY Caddyfile /etc/Caddyfile
+
+# Copy the build from the previous stage and stick it into Caddy file server
+COPY --from=builder /app/build /usr/share/caddy/html

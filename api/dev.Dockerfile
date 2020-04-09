@@ -1,9 +1,13 @@
-# This dockerfile gives you a container with pylint, a development package installed.
-# We use the api image, which should already have been created if you're using docker-compose.
-FROM epr_api:latest
-# NOTE: We could have run `pipenv install --dev --system`, but there are some dependancies,
-# like pyodbc for accessing MS Access files which complicate things.
-# We need pylint to do our linting.
-RUN python -m pip install pylint
-# Run linting and unit tests
-CMD bash -c "./scripts/lint.sh && ./scripts/test.sh"
+FROM python:3.6
+
+# Install pipenv.
+RUN python -m pip install pipenv
+
+WORKDIR /app
+COPY . .
+
+RUN pipenv install --dev
+
+EXPOSE 8080
+
+CMD pipenv run uvicorn main:APP --reload --host 0.0.0.0 --port 8080

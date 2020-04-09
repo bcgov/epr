@@ -4,16 +4,25 @@
 # make PIPENV='python3 -m pipenv' init
 PIPENV=pipenv
 
-docker-build:
+run-test-lint:
+	# Web
+	cd web && npm run lint
+	cd web && npm run test:ci
 	# API
-	# Run tests and linting before starting build. (build runs slowly, so this may save some time)
 	cd api && make PIPENV=$(PIPENV) test
 	cd api && make PIPENV=$(PIPENV) lint
-	# General
+
+docker-build:
 	docker-compose build
 
+docker-build-dev:
+	docker-compose -f docker-compose.dev.yml build
+
 docker-run:
-	docker-compose up --build
+	docker-compose up
+
+docker-run-dev:
+	docker-compose -f docker-compose.dev.yml up
 
 docker-stop:
 	docker-compose down

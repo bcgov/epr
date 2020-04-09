@@ -1,4 +1,4 @@
-# epr
+# EPR
 
 Emergency Personnel Reporting
 
@@ -18,7 +18,7 @@ On Mac:
 brew install docker-compose
 ```
 
-### Installing and running application
+#### Installing and running applications in "production" mode on Docker
 
 ```
 docker-compose up --build
@@ -27,8 +27,21 @@ docker-compose up --build
 OR
 
 ```
-docker-compose --build
+docker-compose build
 docker-compose up
+```
+
+#### Installing and running applications in development mode on Docker
+
+```
+docker-compose -f docker-compose.dev.yml up --build
+```
+
+OR
+
+```
+docker-compose -f docker-compose.dev.yml build
+docker-compose -f docker-compose.dev.yml up
 ```
 
 ## Architecture

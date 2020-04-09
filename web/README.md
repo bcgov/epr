@@ -36,11 +36,13 @@ Launches the test runner in the interactive watch mode.
 Builds the app for production to the `build` folder.
 It correctly bundles React in production mode and optimizes the build for the best performance.
 
-<!-- Todo: Uncomment this after introducing docker-compose
-##### Running the application in docker:
-1. Create `.env` file at root using `.env.example` as a sample
-2. Run `docker-compose build` and then `docker-compose up`
-3. Open [http://localhost:3000](http://localhost:3000) to view it in the browser. -->
+##### Running the application in production mode on Docker:
+
+In the project directory,
+
+1. Build a docker image by running `docker build -t epr-web .`
+2. Run `docker run --env-file .env.docker -p 3000:3000 --rm epr-web:latest`
+3. Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 ## License
 

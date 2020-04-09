@@ -1,0 +1,17 @@
+0.0.0.0:3000 {
+  gzip
+
+  log stdout
+  errors stdout
+
+  root /usr/share/caddy/html
+
+  rewrite {
+    regexp .*
+    to {path} /
+  }
+
+  templates {
+    ext .js
+  }
+}

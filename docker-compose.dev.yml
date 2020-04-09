@@ -1,26 +1,22 @@
 version: "3.7"
 services:
-  web:
-    build: ./web
-    depends_on:
-      - api
-    env_file:
-      - ./web/.env.docker
-    ports:
-      - "3000:3000"
-    volumes:
-      - ./web:/app:delegated
-  api:
-    build: ./api
-    hostname: api
+  api-dev:
+    build:
+      context: ./api
+      dockerfile: dev.Dockerfile
     env_file:
       - ./api/.env.docker
-    ports:
-      - "8080:8080"
     volumes:
       - ./api:/app:delegated
-    depends_on:
-      - db
+  web-dev:
+    build:
+      context: ./web
+      dockerfile: dev.Dockerfile
+    env_file:
+      - ./web/.env.docker
+    volumes:
+      - ./web:/app:delegated
+    hostname: api
   db:
     # https://hub.docker.com/_/postgres
     image: postgres
