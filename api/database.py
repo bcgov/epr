@@ -15,7 +15,7 @@ DB_STRING = 'postgres://{}:{}@{}:{}/{}'.format(getenv('POSTGRES_USER'),
 ENGINE = create_engine(DB_STRING)
 
 # bind session to database
-SESSION = sessionmaker(bind=ENGINE)
+SESSION = sessionmaker(autocommit=False, autoflush=False, bind=ENGINE)
 
 # constructing a base class for declarative class definitions
 BASE = declarative_base()

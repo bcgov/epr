@@ -108,3 +108,6 @@ __pycache__/
 
 # macOS
 .DS_Store
+
+# vs code settings for api
+api/.vscode

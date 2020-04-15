@@ -15,6 +15,7 @@ requests = "*"
 gunicorn = "*"
 psycopg2 = "*"
 sqlalchemy = "*"
+alchemy-mock = "*"
 
 [requires]
 python_version = "3.6"

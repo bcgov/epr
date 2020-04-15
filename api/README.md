@@ -41,6 +41,12 @@ python3 -m pip install pipenv
 python3 -m pipenv install --dev
 ```
 
+### Installing database objects
+
+```
+python3 create_db.py
+```
+
 ### Installing API
 
 #### Local machine, on Mac / Ubuntu
